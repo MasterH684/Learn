@@ -1,0 +1,35 @@
+# Ignore the local configuration of Android Studio/IntelliJ IDEA
+.idea/
+# Ignore the build output directories
+build/
+# Ignore Gradle specific files
+.gradle/
+# Ignore local Gradle Wrapper configuration
+gradle/wrapper/gradle-wrapper.properties
+# Ignore all log files
+*.log
+# Ignore OS-specific files
+.DS_Store
+Thumbs.db
+# Ignore Java class files
+*.class
+# Ignore generated resource files
+*.apk
+*.ap_
+*.dex
+*.jar
+*.war
+*.ear
+*.class
+*.so
+*.dll
+*.exe
+*.o
+*.a
+*.lib
+# Ignore IDE-specific files
+*.iml
+*.ipr
+*.iws
+# Ignore other IDE-specific files
+*.swp
