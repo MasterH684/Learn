@@ -13,7 +13,10 @@
         android:theme="@style/Theme.Learn"
         tools:targetApi="31">
         <activity
-            android:name=".SecondActivity"></activity>
+            android:name=".PushUps"
+            android:exported="false" />
+        <activity android:name=".subMenuB" />
+        <activity android:name=".WeekOverviewActivity"></activity>
         <activity
             android:name=".MainActivity"
             android:exported="true">

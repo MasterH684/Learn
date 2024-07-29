@@ -10,9 +10,14 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val button: Button = findViewById(R.id.button)
-        button.setOnClickListener {
-            val intent = Intent(this, SecondActivity::class.java)
+        val buttonA: Button = findViewById(R.id.buttonA)
+        buttonA.setOnClickListener {
+            val intent = Intent(this, PushUps::class.java)
+            startActivity(intent)
+        }
+        val buttonB: Button = findViewById(R.id.buttonB)
+        buttonB.setOnClickListener {
+            val intent = Intent(this, subMenuB::class.java)
             startActivity(intent)
         }
     }
