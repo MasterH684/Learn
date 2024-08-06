@@ -25,6 +25,7 @@ class WeekOverviewActivity : AppCompatActivity() {
 
         // Bereken de weekoverzicht data
         weekOverviewList = calculateWeeklyTotals(pushupList)
+        sortweekOverviewList()
 
         // Initialiseer de RecyclerView
         recyclerViewWeekOverview.layoutManager = LinearLayoutManager(this)
@@ -58,6 +59,12 @@ class WeekOverviewActivity : AppCompatActivity() {
         }
 
         return weekOverviewList
+    }
+
+    private fun sortweekOverviewList() {
+        weekOverviewList.sortByDescending {
+            it.week
+        }
     }
 }
 

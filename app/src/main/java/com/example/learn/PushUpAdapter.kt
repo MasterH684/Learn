@@ -10,8 +10,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
 class PushupAdapter(
-    private val pushupList: List<PushUpEntry>, // Zorg ervoor dat dit correct is
-    private val context: Context,
+    private val pushupList: List<PushUpEntry>,
     private val updateTotalCallback: () -> Unit
 ) : RecyclerView.Adapter<PushupAdapter.PushupViewHolder>() {
 
@@ -61,8 +60,11 @@ class PushupAdapter(
                     currentItem.sets.add(setCount)
                 }
             }
+            System.out.println("Postition: $position")
+            // Onderstaande onderdelen zijn onderdeel van recyvlerview.jave
+            // Deze zorgen ervoor dat de 'pushupadapter' lambda functie uitgevoerd worden!!
             notifyItemChanged(position)
-            updateTotalCallback() // Voeg deze regel toe
+            updateTotalCallback()
         }
     }
 

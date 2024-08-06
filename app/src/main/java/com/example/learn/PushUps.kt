@@ -1,7 +1,6 @@
 package com.example.learn
 
 import android.app.DatePickerDialog
-import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
@@ -25,7 +24,8 @@ class PushUps : AppCompatActivity() {
     private lateinit var buttonSelectDate: Button
     private lateinit var buttonSavePushups: Button
     private lateinit var buttonWeekOverview: Button
-    private lateinit var textViewTotalPushups: TextView
+    private lateinit var textViewTotalL7D: TextView
+    private lateinit var textViewTotalP7D: TextView
     private lateinit var recyclerViewPushups: RecyclerView
     private lateinit var pushupAdapter: PushupAdapter
     private lateinit var pushupList: MutableList<PushUpEntry>
@@ -42,7 +42,8 @@ class PushUps : AppCompatActivity() {
         buttonSelectDate = findViewById(R.id.buttonSelectDate)
         buttonSavePushups = findViewById(R.id.buttonSavePushups)
         buttonWeekOverview = findViewById(R.id.buttonWeekOverview)
-        textViewTotalPushups = findViewById(R.id.textViewTotalPushups)
+        textViewTotalL7D = findViewById(R.id.textViewTotalL7D)
+        textViewTotalP7D = findViewById(R.id.textViewTotalP7D)
         recyclerViewPushups = findViewById(R.id.recyclerViewPushups)
 
         // Laad de opgeslagen gegevens
@@ -50,9 +51,13 @@ class PushUps : AppCompatActivity() {
 
         // Initialiseer de RecyclerView
         recyclerViewPushups.layoutManager = LinearLayoutManager(this)
-        pushupAdapter = PushupAdapter(pushupList, this) {
-            updateLast7DaysTotal()
-        }
+
+        // Blijkbaar, wordt wat hieronder staat uitgevoerd als er een update is gepusht door de adapter
+        pushupAdapter = PushupAdapter(pushupList) {
+                updateLast7DaysTotal() // deze 2 onderdelen zijn onderdeel van de callback lambda aanroep
+                saveData()
+            }
+
         recyclerViewPushups.adapter = pushupAdapter
 
         // Update de datumweergave
@@ -80,7 +85,6 @@ class PushUps : AppCompatActivity() {
         }
 
         // Update de totale push-ups na het laden van de gegevens
-        updateTotalPushups()
         updateLast7DaysTotal()
     }
 
@@ -110,15 +114,9 @@ class PushUps : AppCompatActivity() {
 
             sortPushupList()
             pushupAdapter.notifyDataSetChanged()
-            updateTotalPushups()
             updateLast7DaysTotal()
             saveData()
         }
-    }
-
-    private fun updateTotalPushups() {
-        val totalPushups = pushupList.sumOf { it.sets.sum() }
-        textViewTotalPushups.text = "Total Push-ups: $totalPushups"
     }
 
     private fun updateLast7DaysTotal() {
@@ -131,7 +129,16 @@ class PushUps : AppCompatActivity() {
             entryDate != null && entryDate.after(sevenDaysAgo)
         }.sumOf { it.sets.sum() }
 
-        textViewTotalPushups.text = "Total Push-ups Last 7 Days: $totalLast7Days"
+        textViewTotalL7D.text = "Total Push-ups Last 7 Days: $totalLast7Days"
+        calendar.add(Calendar.DAY_OF_YEAR, -7)
+        val fourteenDaysAgo = calendar.time
+
+        val totalPrev7Days = pushupList.filter {
+            val entryDate = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).parse(it.date)
+            entryDate != null && entryDate.after(fourteenDaysAgo) && entryDate.before(sevenDaysAgo)
+        }.sumOf { it.sets.sum() }
+
+        textViewTotalP7D.text = "Total Push-ups Previous 7 Days: $totalPrev7Days"
     }
 
     private fun showDatePickerDialog() {
@@ -144,7 +151,6 @@ class PushUps : AppCompatActivity() {
             selectedDate.set(selectedYear, selectedMonth, selectedDay)
             updateDate()
         }, year, month, day)
-
         datePickerDialog.show()
     }
 

@@ -45,7 +45,15 @@
         android:layout_marginBottom="16dp" />
 
     <TextView
-        android:id="@+id/textViewTotalPushups"
+        android:id="@+id/textViewTotalL7D"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Total Push-ups (last 7 days): 0"
+        android:textSize="18sp"
+        android:layout_marginBottom="16dp"/>
+
+    <TextView
+        android:id="@+id/textViewTotalP7D"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Total Push-ups (last 7 days): 0"
