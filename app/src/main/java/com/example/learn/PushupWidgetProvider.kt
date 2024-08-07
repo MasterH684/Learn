@@ -16,16 +16,20 @@ class PushupWidgetProvider : AppWidgetProvider() {
     }
 
     companion object {
-         private fun updateAppWidget(context: Context, appWidgetManager: AppWidgetManager, appWidgetId: Int) {
-            // Maak een intent die naar de PushUps activiteit verwijst
+        private fun updateAppWidget(context: Context, appWidgetManager: AppWidgetManager, appWidgetId: Int) {
+            val sharedPreferences = context.getSharedPreferences("pushupData", Context.MODE_PRIVATE)
+            val last7DaysPushups = sharedPreferences.getInt("totalLast7Days", 0)
+            val prev7DaysPushups = sharedPreferences.getInt("totalPrev7Days", 0)
+
+            val views = RemoteViews(context.packageName, R.layout.widget_layout)
+            views.setTextViewText(R.id.textViewLast7DaysPushups, "L7D: $last7DaysPushups")
+            views.setTextViewText(R.id.textViewPrev7DaysPushups, "P7D: $prev7DaysPushups")
+
             val intent = Intent(context, PushUps::class.java)
             val pendingIntent = PendingIntent.getActivity(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE)
+            views.setOnClickPendingIntent(R.id.textViewLast7DaysPushups, pendingIntent)
+            views.setOnClickPendingIntent(R.id.textViewPrev7DaysPushups, pendingIntent)
 
-            // Stel de layout van de widget in
-            val views = RemoteViews(context.packageName, R.layout.widget_layout)
-            views.setOnClickPendingIntent(R.id.widget_text, pendingIntent)
-
-            // Update de widget
             appWidgetManager.updateAppWidget(appWidgetId, views)
         }
     }

@@ -29,6 +29,8 @@ class PushUps : AppCompatActivity() {
     private lateinit var recyclerViewPushups: RecyclerView
     private lateinit var pushupAdapter: PushupAdapter
     private lateinit var pushupList: MutableList<PushUpEntry>
+    private var totalLast7Days: Int = 0
+    private var totalPrev7Days: Int = 0
 
     private var selectedDate: Calendar = Calendar.getInstance()
 
@@ -124,21 +126,32 @@ class PushUps : AppCompatActivity() {
         calendar.add(Calendar.DAY_OF_YEAR, -7)
         val sevenDaysAgo = calendar.time
 
-        val totalLast7Days = pushupList.filter {
+        totalLast7Days = pushupList.filter {
             val entryDate = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).parse(it.date)
             entryDate != null && entryDate.after(sevenDaysAgo)
         }.sumOf { it.sets.sum() }
-
+        // Hier wordt het totaal van de laatste 7 dagen in de tekstview neergezet.
         textViewTotalL7D.text = "Total Push-ups Last 7 Days: $totalLast7Days"
         calendar.add(Calendar.DAY_OF_YEAR, -7)
         val fourteenDaysAgo = calendar.time
 
-        val totalPrev7Days = pushupList.filter {
+        // Hier wordt het totaal van de vorige 7 dagen in de tekstview neergezet.
+        totalPrev7Days = pushupList.filter {
             val entryDate = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).parse(it.date)
             entryDate != null && entryDate.after(fourteenDaysAgo) && entryDate.before(sevenDaysAgo)
         }.sumOf { it.sets.sum() }
 
         textViewTotalP7D.text = "Total Push-ups Previous 7 Days: $totalPrev7Days"
+
+        saveLWT()
+    }
+
+    private fun saveLWT() {
+        val sharedPreferences = getSharedPreferences("pushupData", MODE_PRIVATE)
+        val editor = sharedPreferences.edit()
+        editor.putInt("totalLast7Days", totalLast7Days)
+        editor.putInt("totalPrev7Days", totalPrev7Days)
+        editor.apply()
     }
 
     private fun showDatePickerDialog() {
