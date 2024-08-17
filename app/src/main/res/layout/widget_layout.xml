@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="16dp"
-    android:background="#FFFFFF">
+    android:background="@color/fallout_background">
 
     <TextView
         android:id="@+id/textViewLast7DaysPushups"
@@ -13,7 +13,7 @@
         android:layout_margin="2sp"
         android:text="L7D: 0"
         android:textSize="20sp"
-        android:textColor="@android:color/black" />
+        android:textColor="@color/fallout_green" />
 
     <TextView
         android:id="@+id/textViewPrev7DaysPushups"
@@ -22,5 +22,5 @@
         android:layout_margin="2sp"
         android:text="P7D: 0"
         android:textSize="20sp"
-        android:textColor="@android:color/black" />
+        android:textColor="@color/fallout_green" />
 </LinearLayout>

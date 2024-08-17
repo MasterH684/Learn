@@ -16,7 +16,7 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this, PushUps::class.java)
             startActivity(intent)
         }
-        val buttonB: Button = findViewById(R.id.buttonB)
+        val buttonB: Button = findViewById(R.id.Statistics)
         buttonB.setOnClickListener {
             // de tweede parameter geeft de nieuwe java classe naam weer geladen moet worden.
             val intent = Intent(this, subMenuB::class.java)

@@ -2,4 +2,16 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="fallout_green">#00FF00</color>
+    <color name="fallout_yellow">#FFFF00</color>
+    <color name="fallout_black">#000000</color>
+    <color name="fallout_blue">#0000FF</color>
+    <color name="fallout_background">#333333</color>
+    <!-- Hier onder staan de kleuren van het Thema??? -->
+    <color name="your_primary_color">#0000FF</color>
+    <color name="your_primary_variant_color">#0000FF</color>
+    <color name="your_on_primary_color">#FFFFFF</color>
+    <color name="your_secondary_color">#FFFF00</color>
+    <color name="your_secondary_variant_color">#FFFF00</color>
+    <color name="your_on_secondary_color">#000000</color>
 </resources>

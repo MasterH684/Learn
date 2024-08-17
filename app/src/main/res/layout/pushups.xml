@@ -2,6 +2,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/fallout_background"
     android:orientation="vertical"
     android:padding="16dp">
 
@@ -15,13 +16,16 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:textColor="@color/fallout_green"
             android:inputType="number"
+            android:textColorHint="@color/fallout_green"
             android:hint="Number in set" />
 
         <TextView
             android:id="@+id/textViewDate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textColor="@color/fallout_green"
             android:text="Date"
             android:layout_marginStart="16dp"
             android:layout_gravity="center_vertical" />
@@ -30,6 +34,7 @@
             android:id="@+id/buttonSelectDate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textColor="@color/fallout_yellow"
             android:text="Select Date"
             android:layout_marginStart="8dp"
             android:layout_gravity="center_vertical" />
@@ -39,6 +44,7 @@
         android:id="@+id/buttonSavePushups"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textColor="@color/fallout_yellow"
         android:text="Add set"
         android:layout_gravity="end"
         android:layout_marginTop="8dp"
@@ -48,6 +54,7 @@
         android:id="@+id/textViewTotalL7D"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:textColor="@color/fallout_green"
         android:text="Total Push-ups (last 7 days): 0"
         android:textSize="18sp"
         android:layout_marginBottom="16dp"/>
@@ -56,6 +63,7 @@
         android:id="@+id/textViewTotalP7D"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:textColor="@color/fallout_green"
         android:text="Total Push-ups (last 7 days): 0"
         android:textSize="18sp"
         android:layout_marginBottom="16dp"/>
@@ -76,12 +84,14 @@
             android:id="@+id/buttonBack"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textColor="@color/fallout_yellow"
             android:text="Back"/>
 
         <Button
             android:id="@+id/buttonWeekOverview"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textColor="@color/fallout_yellow"
             android:text="Week overview" />
     </LinearLayout>
 

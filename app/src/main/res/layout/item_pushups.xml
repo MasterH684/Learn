@@ -9,6 +9,7 @@
         android:id="@+id/textViewDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textColor="@color/fallout_green"
         android:textSize="12sp"
         android:textStyle="bold"
         android:layout_marginEnd="4dp"/>
@@ -22,8 +23,8 @@
         android:gravity="center"
         android:padding="8dp"
         android:textSize="12sp"
-        android:inputType="number"
-        android:textColor="@android:color/holo_red_dark"/>
+        android:textColor="@color/fallout_green"
+        android:inputType="number"/>
 
     <EditText
         android:id="@+id/editTextSet2"
@@ -35,7 +36,7 @@
         android:padding="8dp"
         android:textSize="12sp"
         android:inputType="number"
-        android:textColor="@android:color/holo_red_dark"/>
+        android:textColor="@color/fallout_green"/>
 
     <EditText
         android:id="@+id/editTextSet3"
@@ -47,7 +48,7 @@
         android:padding="8dp"
         android:textSize="12sp"
         android:inputType="number"
-        android:textColor="@android:color/holo_red_dark"/>
+        android:textColor="@color/fallout_green"/>
 
     <EditText
         android:id="@+id/editTextSet4"
@@ -59,7 +60,7 @@
         android:padding="8dp"
         android:textSize="12sp"
         android:inputType="number"
-    android:textColor="@android:color/holo_red_dark"/>
+    android:textColor="@color/fallout_green"/>
 
     <EditText
         android:id="@+id/editTextSet5"
@@ -71,12 +72,13 @@
         android:padding="8dp"
         android:textSize="12sp"
         android:inputType="number"
-        android:textColor="@android:color/holo_red_dark"/>
+        android:textColor="@color/fallout_green"/>
 
     <Button
         android:id="@+id/buttonUpdate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textColor="@color/fallout_yellow"
         android:textSize="12sp"
         android:text="Update"/>
 </LinearLayout>
